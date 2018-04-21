@@ -35,7 +35,6 @@ public class Answers {
 	public String answer(@PathVariable Long questionId, 
 			@RequestParam(value="answer") String answer, 
 			RedirectAttributes flash) {
-		System.out.println(answer);
 		if(answer.length() < 12) {
 			flash.addFlashAttribute("error", "Answer must be 12 characters or more!");
 		} else {
