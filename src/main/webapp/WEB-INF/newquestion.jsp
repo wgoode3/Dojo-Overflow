@@ -20,6 +20,8 @@
 			<p><a href="/signin">Sign in</a> | <a href="/signup">Sign up</a></p>
 		</c:if>
 		
+		<p><a href="/"><button>Return to dashboard</button></a></p>
+		
 		<fieldset class="col">
 			<legend>New Question</legend>
 			<form action="/question" method="post" style="display:inline;">
