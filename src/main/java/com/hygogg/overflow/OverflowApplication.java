@@ -1,12 +1,12 @@
-package com.hygogg.dojoOverflow;
+package com.hygogg.overflow;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DojoOverflowApplication {
+public class OverflowApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DojoOverflowApplication.class, args);
+		SpringApplication.run(OverflowApplication.class, args);
 	}
 }

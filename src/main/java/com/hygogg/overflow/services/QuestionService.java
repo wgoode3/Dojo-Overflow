@@ -1,12 +1,12 @@
-package com.hygogg.dojoOverflow.Services;
+package com.hygogg.overflow.services;
 
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hygogg.dojoOverflow.Models.Question;
-import com.hygogg.dojoOverflow.Repositories.QuestionRepository;
+import com.hygogg.overflow.models.Question;
+import com.hygogg.overflow.repositories.QuestionRepository;
 
 @Service
 public class QuestionService {

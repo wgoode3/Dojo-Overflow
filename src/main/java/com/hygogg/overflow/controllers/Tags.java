@@ -1,19 +1,22 @@
-package com.hygogg.dojoOverflow.Controllers;
+package com.hygogg.overflow.controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hygogg.dojoOverflow.Models.Question;
-import com.hygogg.dojoOverflow.Models.Tag;
-import com.hygogg.dojoOverflow.Services.QuestionService;
-import com.hygogg.dojoOverflow.Services.TagService;
+import com.hygogg.overflow.models.Question;
+import com.hygogg.overflow.models.Tag;
+import com.hygogg.overflow.models.User;
+import com.hygogg.overflow.services.QuestionService;
+import com.hygogg.overflow.services.TagService;
 
 @RestController
 public class Tags {
@@ -29,8 +32,8 @@ public class Tags {
 	}
 	
 	@RequestMapping("/test")
-	public String test(@RequestBody HashMap<String, String> body) {
-		
+	public String test(@RequestBody HashMap<String, String> body, HttpSession session) {
+		body.remove("_csrf");
 		Iterator<Entry<String, String>> it = body.entrySet().iterator();
 		Question question = new Question();
 		ArrayList<Tag> tags = new ArrayList<Tag>();
@@ -41,7 +44,7 @@ public class Tags {
             if(pair.getKey().equals("question")) {
             	question = new Question(pair.getValue());
             } else {
-            	if(pair.getValue().length() > 2) {
+            	if(pair.getValue().length() > 1) {
             		tags.add(tagService.create(new Tag(pair.getValue())));
             	}
             }
@@ -59,6 +62,8 @@ public class Tags {
 			// TODO: find a way to send the array list of errors in the response
 			return "{\"status\":200, \"valid\": false}";
 		} else {
+			User user = (User) session.getAttribute("user");
+			question.setUser(user);
 			Question question1 = questionService.create(question);
 			question1.setTags(tags);
 			questionService.update(question1);

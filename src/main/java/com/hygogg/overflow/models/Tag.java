@@ -1,4 +1,4 @@
-package com.hygogg.dojoOverflow.Models;
+package com.hygogg.overflow.models;
 
 import java.util.Date;
 import java.util.List;
@@ -12,9 +12,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name="tags")
 public class Tag {
 	
 	@Id

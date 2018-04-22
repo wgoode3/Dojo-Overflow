@@ -1,4 +1,4 @@
-package com.hygogg.dojoOverflow.Models;
+package com.hygogg.overflow.models;
 
 import java.util.Date;
 import java.util.List;
@@ -10,12 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name="questions")
 public class Question {
 	
 	@Id
@@ -27,6 +30,10 @@ public class Question {
 	
 	@OneToMany(mappedBy="question", fetch = FetchType.LAZY)
 	private List<Answer> answers;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user")
+    private User user;
 
 	private Date createdAt;
 	
@@ -71,6 +78,14 @@ public class Question {
 
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Date getCreatedAt() {

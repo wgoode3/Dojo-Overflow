@@ -1,10 +1,10 @@
-package com.hygogg.dojoOverflow.Services;
+package com.hygogg.overflow.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hygogg.dojoOverflow.Models.Answer;
-import com.hygogg.dojoOverflow.Repositories.AnswerRepository;
+import com.hygogg.overflow.models.Answer;
+import com.hygogg.overflow.repositories.AnswerRepository;
 
 @Service
 public class AnswerService {

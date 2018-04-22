@@ -13,6 +13,13 @@
 	<div class="container">
 		<h1>Dojo Overflow</h1>
 		
+		<c:if test="${user != null}">
+			<p>Welcome back: ${user.getUsername()}! <a href="/logout"><button>Sign out</button></a></p>
+		</c:if>
+		<c:if test="${user == null}">
+			<p><a href="/signin">Sign in</a> | <a href="/signup">Sign up</a></p>
+		</c:if>
+		
 		<fieldset class="col">
 			<legend>New Question</legend>
 			<form action="/question" method="post" style="display:inline;">
@@ -25,6 +32,7 @@
 					<textarea name="tags0" rows=1 cols=60></textarea>
 				</p>
 				<button type="submit">Submit Question</button>
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
 			<a href="/"><button>Cancel</button></a>
 		</fieldset>

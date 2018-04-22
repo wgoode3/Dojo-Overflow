@@ -1,12 +1,12 @@
-package com.hygogg.dojoOverflow.Services;
+package com.hygogg.overflow.services;
 
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hygogg.dojoOverflow.Models.Tag;
-import com.hygogg.dojoOverflow.Repositories.TagRepository;
+import com.hygogg.overflow.models.Tag;
+import com.hygogg.overflow.repositories.TagRepository;
 
 @Service
 public class TagService {

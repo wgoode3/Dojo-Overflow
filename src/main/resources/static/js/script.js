@@ -1,6 +1,6 @@
 "use strict";
 		
-function postData(url, data) {
+function postData(url, csrf_token, data) {
 	// Default options are marked with *
 	return fetch(url, {
 		body: JSON.stringify(data), // must match 'Content-Type' header
@@ -8,7 +8,8 @@ function postData(url, data) {
 		credentials: 'same-origin', // include, same-origin, *omit
 		headers: {
 			'user-agent': 'Mozilla/4.0 MDN Example',
-			'content-type': 'application/json'
+			'content-type': 'application/json',
+			'X-CSRF-TOKEN': csrf_token,
 		},
 		method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		mode: 'cors', // no-cors, cors, *same-origin
@@ -52,7 +53,7 @@ form.addEventListener("submit", function(e){
 			data[x.name] = x.value;
 		}
 	}
-	postData('/test', data)
+	postData('/test', data._csrf, data)
 	.then(res => {
 		if(res.valid){
 			window.location = "/";

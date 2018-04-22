@@ -11,18 +11,31 @@
 <body>
 
 	<div class="container">
+		
 		<h1>Dojo Overflow</h1>
+	
+		<c:if test="${user != null}">
+			<p>Welcome back: ${user.getUsername()}! <a href="/logout"><button>Sign out</button></a></p>
+		</c:if>
+		<c:if test="${user == null}">
+			<p><a href="/signin">Sign in</a> | <a href="/signup">Sign up</a></p>
+		</c:if>
+		<c:if test="${error != null}">
+			<p>${error}</p>
+		</c:if>
 		
 		<fieldset>
 			<legend>All Questions</legend>
 			<table border=1>
 				<tr>
 					<th>Question</th>
+					<th>Asked by</th>
 					<th>Tags</th>
 				</tr>
 				<c:forEach items="${questions}" var="question">		
 					<tr>
 						<td><a href="/question/${question.id}">${question.question}</a></td>
+						<td>${question.getUser().getUsername()}</td>
 						<td><c:forEach items="${question.getTags()}" var="tag" varStatus="loop">
 							${tag.subject}<c:if test="${loop.index+1 < question.getTags().size()}">,</c:if>
 						</c:forEach></td>
@@ -32,6 +45,7 @@
 		</fieldset>
 		
 		<p><a href="/question/new"><button>Ask a question</button></a></p>
+		
 	</div>
 	
 </body>

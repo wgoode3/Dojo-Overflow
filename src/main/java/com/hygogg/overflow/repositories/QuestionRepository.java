@@ -1,12 +1,14 @@
-package com.hygogg.dojoOverflow.Repositories;
+package com.hygogg.overflow.repositories;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import com.hygogg.dojoOverflow.Models.Question;
+
+import com.hygogg.overflow.models.Question;
+
 
 public interface QuestionRepository extends CrudRepository<Question, Long> {
 	
-	@Query(value="SELECT * FROM question WHERE id=?1",nativeQuery=true)
+	@Query(value="SELECT * FROM questions WHERE id=?1",nativeQuery=true)
 	public Question getQuestionById(Long questionId);
 	
 }

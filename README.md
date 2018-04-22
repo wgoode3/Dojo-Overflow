@@ -2,10 +2,10 @@
 Stack Overflow like question and answer site in Java Spring
 
 <hr>
-To get this running make a start up mysql and create a schema called ```overflow```
+To get this running make a start up mysql and create a schema called ```dojooverflow```
 
 ```sql
-CREATE SCHEMA overflow;
+CREATE SCHEMA dojooverflow;
 ```
 
 Also edit ```src/main/resources/application.properties``` to change the username and password to the appropriate values for your mysql
